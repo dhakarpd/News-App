@@ -5,8 +5,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dhakar.piyush.newsapp.data.model.Article
-import com.dhakar.piyush.newsapp.data.network.RetrofitClient
-import com.dhakar.piyush.newsapp.data.repository.NewsApiRepositoryImpl
 import com.dhakar.piyush.newsapp.domain.repository.NewsRepository
 import com.dhakar.piyush.newsapp.util.InternetConnectivityChecker
 import dagger.hilt.android.lifecycle.HiltViewModel

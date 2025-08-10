@@ -1,5 +1,6 @@
 package com.dhakar.piyush.newsapp.core.di
 
+import com.dhakar.piyush.newsapp.data.local.NewsDao
 import com.dhakar.piyush.newsapp.data.network.ApiService
 import com.dhakar.piyush.newsapp.data.network.RetrofitClient
 import com.dhakar.piyush.newsapp.data.repository.NewsApiRepositoryImpl
@@ -18,8 +19,8 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNetworkRepository(apiService: ApiService): NewsRepository {
-        return NewsApiRepositoryImpl(apiService)
+    fun provideNetworkRepository(apiService: ApiService, newsDao: NewsDao): NewsRepository {
+        return NewsApiRepositoryImpl(apiService, newsDao)
     }
 
     @Provides
