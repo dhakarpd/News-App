@@ -5,13 +5,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dhakar.piyush.newsapp.data.model.Article
-import com.dhakar.piyush.newsapp.data.network.RetrofitClient
-import com.dhakar.piyush.newsapp.data.repository.NewsApiRepositoryImpl
+import com.dhakar.piyush.newsapp.domain.repository.NewsRepository
 import com.dhakar.piyush.newsapp.util.InternetConnectivityChecker
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class NewsViewmodel(): ViewModel() {
+@HiltViewModel
+class NewsViewmodel @Inject constructor(val newsRepository: NewsRepository): ViewModel() {
 
     /**
      *      Possible values
@@ -30,8 +32,7 @@ class NewsViewmodel(): ViewModel() {
             newsFetchStatus.value = "Fetching"
 
             if(InternetConnectivityChecker.isConnectedToInternet(context = context)) {
-                val newsRsp = NewsApiRepositoryImpl(RetrofitClient.apiService)
-                    .getNewsHeadlinesByCountry(country = country)
+                val newsRsp = newsRepository.getNewsHeadlinesByCountry(country = country)
 
                 newsFetchStatus.value = newsRsp?.let {
                     newsData = it.articles

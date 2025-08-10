@@ -17,12 +17,15 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.dhakar.piyush.newsapp.ui.NewsListView
 import com.dhakar.piyush.newsapp.ui.theme.NewsAppTheme
 import com.dhakar.piyush.newsapp.ui.viewmodel.NewsViewmodel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +50,8 @@ class MainActivity : ComponentActivity() {
 fun Greeting(
     name: String,
     modifier: Modifier = Modifier,
-    newsViewmodel: NewsViewmodel = viewModel()) {
+    newsViewmodel: NewsViewmodel = hiltViewModel()
+) {
 
     val context = LocalContext.current
 
