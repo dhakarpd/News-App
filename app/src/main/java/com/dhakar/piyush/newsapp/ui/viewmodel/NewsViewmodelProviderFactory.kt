@@ -3,6 +3,7 @@ package com.dhakar.piyush.newsapp.ui.viewmodel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.dhakar.piyush.newsapp.domain.repository.NewsRepository
 
 
 /**
@@ -23,11 +24,11 @@ import androidx.lifecycle.ViewModelProvider
  * viewModel() call will not create a new ViewModel on every recomposition.
  *
  * **/
-class NewsViewmodelProviderFactory(val context: Context): ViewModelProvider.Factory {
+class NewsViewmodelProviderFactory(val newsRepository: NewsRepository): ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(NewsViewmodel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return NewsViewmodel() as T
+            return NewsViewmodel(newsRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
