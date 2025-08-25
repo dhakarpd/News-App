@@ -15,5 +15,5 @@ interface ApiService {
         // TODO: Add below header via interceptor
         @Header("X-Api-Key") authKey: String,
         @Query("country") country: String,
-    ): Response<NewsSearchRsp?>
+    ): Response<NewsSearchRsp?>?
 }

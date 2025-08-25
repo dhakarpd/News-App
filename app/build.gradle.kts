@@ -70,6 +70,7 @@ dependencies {
 
     // Hilt
     implementation(libs.hilt.android)
+    testImplementation(libs.junit.junit)
     ksp(libs.hilt.compiler)
 
     // Jetpack Compose ViewModel integration
@@ -80,6 +81,12 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler) // for annotation processing
 
+    testImplementation(libs.androidx.room.testing)
+    androidTestImplementation(libs.androidx.room.testing)
+
+    testImplementation(libs.androidx.core.testing)
+    androidTestImplementation(libs.androidx.core.testing)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -87,4 +94,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
 }

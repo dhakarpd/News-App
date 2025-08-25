@@ -14,7 +14,7 @@ class NewsApiRepositoryImpl(val apiService: ApiService, val newsDao: NewsDao): N
                 authKey = "",
                 country = country,
             )
-            if (apiResponse.isSuccessful && apiResponse.body()!= null){
+            if (apiResponse?.isSuccessful == true && apiResponse.body()!= null){
                 newsSearchResponse = apiResponse.body()
                 newsSearchResponse?.let { saveDataToDb(it) }
             }
